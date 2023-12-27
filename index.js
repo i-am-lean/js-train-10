@@ -71,34 +71,25 @@ console.log(
  * Повертаємо - Об'єкт, створений з записів з обробленими значеннями.
  */
 function customObjectFromEntries(entries) {
-
- 
-  // Використання методу `map` для обробки значень властивостей
   
-  
-  
-  // Використання методу `fromEntries` для створення об'єкта з масиву записів
-  // Повернення створеного об'єкта
-
    // Перевірка, чи вхідний аргумент є масивом,якщо ні повертаєм "Помилка: Вхідний аргумент має бути масивом."
   if(!Array.isArray(entries)){
     return "Помилка: Вхідний аргумент має бути масивом.";
   }
-  const entriesWithProcessedValues = entries.map((entry) => {
-    const [key, value] = entry;})
-
-  for (const [key, value] of Object.entries(entries)) {
+  // Використання методу `map` для обробки значень властивостей 
+  const processedEntries = entries.map(([key, value]) => {
     // Перевірка, чи ключ  є числом
     if(typeof key === "number") {
       // Перетворення числового значення на рядок
-      key = string[{key}];
+      value = String(key);
     }
     // Повернення обробленого запису [key, value]
     return [key, value];
-    }
-
-    const obj = Object.fromEntries(entries);
-    return entriesWithProcessedValues;
+    });
+    // Використання методу `fromEntries` для створення об'єкта з масиву записів
+    const obj = Object.fromEntries(processedEntries);
+    // Повернення створеного об'єкта
+    return obj;
 
 }
 
@@ -348,18 +339,18 @@ function convertArrayToObj(arr) {
   // Створюємо пустий об'єкт який записуємо в змінну
   const obj = {};
   // Проходимося по кожному підмасиву в масиві за допопмогою циклу for, лічильник від нуля до довжини масиву
-  for (let i = 1; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     // Розпаковуємо підмасив за допомогою деструктурізації на окремі змінні для ключа та значення
     const [key, value] = arr[i];
     // Перевіряємо, чи існує вже ключ в об'єкті,якщо так виводимо в консоль повідомлення `У масиві є дубльований ключ: ${key}`
-    if (obj.hasOwnProperty[key]) {
-      console.error(`У масиві є дубльований ключ: ${key}`);
+    if (obj.hasOwnProperty(key)) {
+      console.log(`У масиві є дубльований ключ: ${key}`);
     }
     // Додаємо ключ та значення до об'єкта
-    obj + key = value;
+    obj[key] = value;
   }
   // Застосовуємо метод Object.fromEntries() для створення об'єкта
-  return Object.fromEntries(obj);
+  return Object.fromEntries(arr);
 }
 
 console.log("Завдання: 12 ==============================");
